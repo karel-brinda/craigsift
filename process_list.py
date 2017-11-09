@@ -107,7 +107,8 @@ def process_item(it):
 
 	m=re_link.search(it)
 	try:
-		d["url"]="https://boston.craigslist.org"+m.group(1)
+		d["url"]=m.group(1)
+		#d["url"]="https://boston.craigslist.org"+m.group(1)
 	except (IndexError, AttributeError):
 		d["url"]="NA"
 
