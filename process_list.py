@@ -80,11 +80,15 @@ def assign_categories(items):
 	for item in items:
 		cat='ok'
 
+		desc_norm=item['desc'].replace("&amp;","")
 		for f in out_phrases:
-			if item['desc'].lower().find(f)!=-1:
+			if desc_norm.lower().find(f)!=-1:
 				cat='out'
 
-		if item['desc']==item['desc'].upper():
+		if desc_norm==desc_norm.upper():
+			cat='spam'
+
+		if desc_norm.find("**")!=-1:
 			cat='spam'
 
 		#if item['url'].find("/gbs/abo/")==-1:
