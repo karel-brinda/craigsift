@@ -83,7 +83,7 @@ def assign_categories(items):
 
 		desc_norm=item['desc'].replace("&amp;","")
 		for f in out_phrases:
-			if desc_norm.lower().find(f)!=-1:
+			if desc_norm.lower().find(f.lower())!=-1:
 				cat='out'
 
 		if desc_norm==desc_norm.upper():
