@@ -22,6 +22,7 @@ out_phrases=[
 	'studio',
 	'BR available',
 	'room available',
+	'available room',
 	'BR in',
 	'BD in',
 	'room in',
