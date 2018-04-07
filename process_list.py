@@ -33,6 +33,7 @@ out_phrases=[
 	'roommate',
 	'flatmate',
 	'share',
+	'Huron',
 ]
 
 
