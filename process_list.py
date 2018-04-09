@@ -31,10 +31,12 @@ out_phrases=[
 	'rooms in',
 	'roommate',
 	'shared',
+	'sharing',
 	'roommate',
 	'flatmate',
 	'share',
 	'Huron',
+	'luxury',
 ]
 
 
