@@ -20,5 +20,5 @@ mkdir lists
 )
 
 ${DIR}/process_list.py ./lists/* > results.all.html
-${DIR}/process_list.py -c ok ./lists/* > results.ok.html
+${DIR}/process_list.py -c ok ./lists/* > results.ok.html && (open results.ok.html || true)
 
