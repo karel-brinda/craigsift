@@ -2,7 +2,7 @@
 
 DIR=$(dirname $0)
 
-zip_codes="02446 02445"
+zip_codes="02447"
 
 set -e
 set -o pipefail
