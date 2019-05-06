@@ -4,9 +4,9 @@ DIR=$(dirname $0)
 
 #zip_codes="02142 02141 02140 02139 02138 02134 02115 02199"
 #zip_codes="02142 02141 02140 02139 02138 02135"
-#zip_codes="02135"
+zip_codes="02135"
 #zip_codes="02139 02138" # Cambridge
-zip_codes="02445 02446 02447 02467" # Brookline
+#zip_codes="02445 02446 02447 02467" # Brookline
 
 
 set -e
