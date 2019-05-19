@@ -54,6 +54,8 @@ re_spam_phrases0 = [
 
 re_whitelist0 = [
     r'deleaded',
+    r'8/1',
+    r'aug',
 ]
 
 re_out_phrases = [re.compile(r'.*' + x + r'.*', re.IGNORECASE) for x in re_out_phrases0]
