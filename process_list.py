@@ -44,7 +44,7 @@ re_out_phrases0 = [
     r'flatmate',
     r'share',
     #r'Huron',
-    r'luxury',
+    r'(luxury|stylish|peaceful|superb|desirable|well-loved|cat okay)',
 ]
 
 re_spam_phrases0 = [
@@ -52,8 +52,13 @@ re_spam_phrases0 = [
     r'\*\*',
 ]
 
+re_whitelist0 = [
+    r'deleaded',
+]
+
 re_out_phrases = [re.compile(r'.*' + x + r'.*', re.IGNORECASE) for x in re_out_phrases0]
 re_spam_phrases = [re.compile(r'.*' + x + r'.*', re.IGNORECASE) for x in re_spam_phrases0]
+re_whitelist = [re.compile(r'.*' + x + r'.*', re.IGNORECASE) for x in re_whitelist0]
 
 
 def remove_duplicates(items):
@@ -122,6 +127,14 @@ def assign_categories(items):
                 filt=r
                 cat = 'spam'
                 break
+
+        for r in re_whitelist:
+            m = r.match(desc_norm.lower())
+            if m:
+                filt=r
+                cat = 'ok'
+                break
+
 
         #if item['url'].find("/gbs/abo/")==-1:
         #   cat='cat'
