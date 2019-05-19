@@ -18,35 +18,43 @@ re_desc=re.compile(r'hdrlnk">(.*?)</a')
 # remove
 # - "available "
 
-out_phrases=[
-    'studio',
-    #'BR available',
-    'room available',
-    'available room',
-    #'BR in',
-    'BD in',
-    '1 BD',
-    '1 BR',
-    '1 bed',
-    '1BD',
-    #'1BR',
-    '1bed',
-    'sept',
-    #'9/1',
-    '6/1',
-    'room in',
-    #'BRs in',
-    'BDs in',
-    'rooms in',
-    'roommate',
-    'shared',
-    'sharing',
-    'roommate',
-    'flatmate',
-    'share',
-    'Huron',
-    'luxury',
+re_out_phrases0=[
+    r'studio',
+    #r'BR available',
+    r'room available',
+    r'available room',
+    #r'BR in',
+    r'BD in',
+    r'1 BD',
+    r'1 BR',
+    r'1 bed',
+    r'1BD',
+    #r'1BR',
+    r'1bed',
+    r'sept',
+    #r'9/1',
+    #r'6/1',
+    r'room in',
+    #r'BRs in',
+    r'BDs in',
+    r'rooms in',
+    r'roommate',
+    r'shared',
+    r'sharing',
+    r'roommate',
+    r'flatmate',
+    r'share',
+    r'Huron',
+    r'luxury',
 ]
+
+re_spam_phrases0=[
+    r'\s\S\s\S\s\S\s\S\s',
+    r'\*\*',
+]
+
+re_out_phrases=[re.compile(r'.*'+x+r'.*') for x in re_out_phrases0]
+re_spam_phrases=[re.compile(r'.*'+x+r'.*') for x in re_spam_phrases0]
 
 
 def remove_duplicates(items):
@@ -94,15 +102,18 @@ def assign_categories(items):
         cat='ok'
 
         desc_norm=item['desc'].replace("&amp;","")
-        for f in out_phrases:
-            if desc_norm.lower().find(f.lower())!=-1:
+        for r in re_out_phrases:
+            m=r.match(desc_norm.lower())
+            if m:
                 cat='out'
 
         if desc_norm==desc_norm.upper():
             cat='spam'
 
-        if desc_norm.find("**")!=-1:
-            cat='spam'
+        for r in re_spam_phrases:
+            m=r.match(desc_norm.lower())
+            if m:
+                cat='spam'
 
         #if item['url'].find("/gbs/abo/")==-1:
         #   cat='cat'
