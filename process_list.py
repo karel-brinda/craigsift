@@ -24,26 +24,26 @@ re_out_phrases0 = [
     r'available room',
     #r'BR in',
     r'BD in',
-    r'1 BD',
-    r'1 BR',
-    r'1 bed',
-    r'1BD',
+    #r'1 BD',
+    #r'1 BR',
+    #r'1 bed',
+    #r'1BD',
     #r'1BR',
-    r'1bed',
+    #r'1bed',
     r'sept',
     #r'9/1',
     #r'6/1',
-    r'room in',
+    #r'room in',
     #r'BRs in',
     r'BDs in',
-    r'rooms in',
+    #r'rooms in',
     r'roommate',
     r'shared',
     r'sharing',
     r'roommate',
     r'flatmate',
     r'share',
-    r'Huron',
+    #r'Huron',
     r'luxury',
 ]
 
@@ -52,8 +52,8 @@ re_spam_phrases0 = [
     r'\*\*',
 ]
 
-re_out_phrases = [re.compile(r'.*' + x + r'.*') for x in re_out_phrases0]
-re_spam_phrases = [re.compile(r'.*' + x + r'.*') for x in re_spam_phrases0]
+re_out_phrases = [re.compile(r'.*' + x + r'.*', re.IGNORECASE) for x in re_out_phrases0]
+re_spam_phrases = [re.compile(r'.*' + x + r'.*', re.IGNORECASE) for x in re_spam_phrases0]
 
 
 def remove_duplicates(items):
@@ -100,11 +100,15 @@ def assign_categories(items):
     for item in items:
         cat = 'ok'
 
+        filt=""
+
         desc_norm = item['desc'].replace("&amp;", "")
         for r in re_out_phrases:
             m = r.match(desc_norm.lower())
             if m:
                 cat = 'out'
+                filt=r
+                break
 
         if desc_norm == desc_norm.upper():
             cat = 'spam'
@@ -112,12 +116,15 @@ def assign_categories(items):
         for r in re_spam_phrases:
             m = r.match(desc_norm.lower())
             if m:
+                filt=r
                 cat = 'spam'
+                break
 
         #if item['url'].find("/gbs/abo/")==-1:
         #   cat='cat'
 
         item['cat'] = cat
+        item['filtered']=filt
         items_cat.append(item)
 
     return items_cat
@@ -184,8 +191,8 @@ a:visited {{color:black;}}
 
 </html>
     """.format("\n".join([
-        '<tr><td>{}</td><td>{}</td><td>${}</td><td><a href="{}">{}</a></td><td>{}</td></tr>'
-        .format(r['datetime'], r['cat'], r['price'], r['url'], r['desc'],
+        '<tr title="{}""><td>{}</td><td>{}</td><td>${}</td><td><a href="{}">{}</a></td><td>{}</td></tr>'
+        .format(r['filtered'], r['datetime'], r['cat'], r['price'], r['url'], r['desc'],
                 r['file']) for r in rs
     ])))
 
