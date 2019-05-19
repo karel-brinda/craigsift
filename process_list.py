@@ -109,7 +109,7 @@ def assign_categories(items):
 
         desc_norm = item['desc'].replace("&amp;", "")
         for r in re_out_phrases:
-            m = r.match(desc_norm.lower())
+            m = r.match(desc_norm)
             if m:
                 cat = 'out'
                 filt=r
@@ -122,14 +122,14 @@ def assign_categories(items):
             cat = 'spam'
 
         for r in re_spam_phrases:
-            m = r.match(desc_norm.lower())
+            m = r.match(desc_norm)
             if m:
                 filt=r
                 cat = 'spam'
                 break
 
         for r in re_whitelist:
-            m = r.match(desc_norm.lower())
+            m = r.match(desc_norm)
             if m:
                 filt=r
                 cat = 'ok'
