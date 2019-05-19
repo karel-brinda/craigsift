@@ -31,7 +31,7 @@ re_out_phrases0 = [
     #r'1BR',
     #r'1bed',
     r'sept',
-    #r'9/1',
+    r'9/1',
     #r'6/1',
     #r'room in',
     #r'BRs in',
