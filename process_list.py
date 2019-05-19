@@ -110,7 +110,10 @@ def assign_categories(items):
                 filt=r
                 break
 
-        if desc_norm == desc_norm.upper():
+        uppers=sum(1 for c in desc_norm if c.isupper())
+        lowers=sum(1 for c in desc_norm if c.islower())
+
+        if uppers > 0.5*(uppers+lowers):
             cat = 'spam'
 
         for r in re_spam_phrases:
