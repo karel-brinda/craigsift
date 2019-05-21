@@ -44,7 +44,8 @@ re_out_phrases0 = [
     r'flatmate',
     r'share',
     #r'Huron',
-    r'(luxury|stylish|peaceful|superb|desirable|well-loved|cat okay)',
+    r'\[?(6|7)/1\]?\s*\*?NO FEE\*?',
+    r'(luxury|stylish|peaceful|superb|desirable|well-loved|cats? ok)',
 ]
 
 re_spam_phrases0 = [
