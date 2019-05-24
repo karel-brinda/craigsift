@@ -18,7 +18,7 @@ mkdir lists
 	cd lists
 	for zip in $zip_codes; do
 		echo "Downloading $zip"
-		curl "https://boston.craigslist.org/search/nfa?min_bedrooms=2&search_distance=0&postal=$zip&min_price=1900&max_price=2500" > "$zip.html" &
+		curl "https://boston.craigslist.org/search/nfa?min_bedrooms=3&search_distance=0&postal=$zip&min_price=1900&max_price=2500" > "$zip.html" &
 	done;
 	wait
 )
