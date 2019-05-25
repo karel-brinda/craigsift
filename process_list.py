@@ -198,7 +198,8 @@ def print_as_html(rs):
 <meta charset="UTF-8">
 <title>Craigslist filtered results</title>
 <style>
-a:visited {{color:black;}}
+          a:link              {{ color:black; }}
+          a:visited           {{ color:#aaa; }}
 </style>
 </head>
 
