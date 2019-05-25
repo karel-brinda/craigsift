@@ -1,18 +1,9 @@
 #! /usr/bin/env bash
 
 DIR=$(pwd)
-echo $DIR
-
-#zip_codes="02142 02141 02140 02139 02138 02134 02115 02199"
-#zip_codes="02142 02141 02140 02139 02138 02135"
-zip_codes="02135"
-#zip_codes="02139 02138" # Cambridge
-#zip_codes="02445 02446 02447 02467" # Brookline
-
 
 set -e
 set -o pipefail
-
 
 download_zip() {
 	zip="$1"
@@ -26,7 +17,7 @@ download_zip() {
 	)
 }
 
-download() {
+sift() {
 	mkdir -p "$1"
 	cd "$1"
 	mkdir -p lists
@@ -40,11 +31,12 @@ download() {
 	$DIR/process_list.py -c ok ./lists/* > results.ok.html && (open results.ok.html || true)
 }
 
-
-
 minBedrooms=2
 minPrice=1900
 maxPrice=2500
 
-download brighton 02135
-download cambridge 02138 02139
+sift brighton 02135
+sift cambridge 02138 02139
+sift cambridge-ext 02142 02141 02140 02139 02138 02143
+sift brookline 02445 02446 02447 02467
+
