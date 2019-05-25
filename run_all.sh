@@ -19,16 +19,19 @@ download_zip() {
 
 sift() {
 	mkdir -p "$1"
+	(
 	cd "$1"
 	mkdir -p lists
 	shift
 
 	for zip in $@; do
-		download_zip "$zip"
+		download_zip "$zip" &
 	done
+	wait
 
 	$DIR/process_list.py ./lists/* > results.all.html
 	$DIR/process_list.py -c ok ./lists/* > results.ok.html && (open results.ok.html || true)
+	)
 }
 
 minBedrooms=2
