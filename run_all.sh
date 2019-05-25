@@ -34,12 +34,14 @@ sift() {
 	)
 }
 
-minBedrooms=2
 minPrice=1900
 maxPrice=2500
 
-sift brighton 02135
+minBedrooms=1
 sift cambridge 02138 02139
+
+minBedrooms=2
+sift brighton 02135
 sift cambridge-ext 02142 02141 02140 02139 02138 02143
 sift brookline 02445 02446 02447 02467
 
