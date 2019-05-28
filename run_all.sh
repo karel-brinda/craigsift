@@ -41,17 +41,17 @@ minPrice=1900
 maxPrice=2500
 
 minBedrooms=1
-sift cambridge 02138 02139
-sift brookline 02445 02446 02447 02467
+sift cambridge 02138 02139 &
+sift brookline 02445 02446 02447 02467 &
+wait
 
 minBedrooms=2
-sift brighton 02135
-sift cambridge-ext 02142 02141 02140 02139 02138 02143
+sift brighton 02135 &
+sift cambridge-ext 02142 02141 02140 02139 02138 02143 &
+wait
 
 category=fee
 maxPrice=2300
 sift cambridge-fee 02138 02139
 
-maxPrice=2100
-sift brighton-fee 02135
 
