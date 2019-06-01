@@ -55,5 +55,5 @@ maxPrice=2300
 sift brighton-fee 02135 &
 sift cambridge-fee 02138 02139 &
 sift cambridge-ext-fee 02142 02141 02140 02139 02138 02143 &
-sift brookline 02445 02446 02447 02467 &
+sift brookline-fee 02445 02446 02447 02467 &
 wait
